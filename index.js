@@ -47,6 +47,7 @@ function updateQuestion(){
     console.log(currQuestText);
     currentAnswerList();
     updateQtnNum();
+    correctAns = appState.QUESTIONS[appState.currentQuestion].correct;
 };
 
 function updateUserScore(){
@@ -59,9 +60,9 @@ function updateUserScore(){
 //ASK: the radio button doesn't light up until after the alert
 function handleAnswerSelection(){
     console.log('handleAnswerSelection ran');
-    currentAnsVal = appState.currentQuestion;
-    console.log(currentAnsVal);
-    correctAns = appState.QUESTIONS[appState.currentQuestion].correct;
+    //currentAnsVal = appState.currentQuestion;
+   // console.log(currentAnsVal);
+   
     $('.answers').on('click', ':radio', event=> {
        testAnswer = $(event.currentTarget).attr('value');
          console.log(testAnswer + ' this is what I chose');
