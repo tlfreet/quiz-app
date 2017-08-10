@@ -8,7 +8,7 @@ appState.QUESTIONS = [
             c:'Louisville',
             d:'Bowling Green',
         },
-        correctAnswer: 'a',
+        correct: 'a',
     },
         {
         questionId: 2,
@@ -19,7 +19,7 @@ appState.QUESTIONS = [
             c:'North Dakota',
             d:'Maryland',
         },
-        correctAnswer: 'c',
+        correct: 'c',
     },
         {
         questionId: 3,
@@ -30,7 +30,7 @@ appState.QUESTIONS = [
             c:'Sacramento',
             d:'Boise',
         },
-        correctAnswer:'a',
+        correct:'a',
     },
         {
         questionId: 4,
@@ -41,7 +41,7 @@ appState.QUESTIONS = [
             c:'Olympia',
             d:'Spokane',
         },
-        correctAnswer:'c',
+        correct:'c',
     },
         {
         questionId: 5,
@@ -52,7 +52,7 @@ appState.QUESTIONS = [
             c:'Durham',
             d:'Greensboro',
         },
-        correctAnswer:'b',
+        correct:'b',
     },
         {
         questionId: 6,
@@ -63,7 +63,7 @@ appState.QUESTIONS = [
             c:'Columbus',
             d:'Harrisburg',
         },
-        correctAnswer:'b',
+        correct:'b',
     },
         {
         questionId: 7,
@@ -74,7 +74,7 @@ appState.QUESTIONS = [
             c:'Colorado',
             d:'Missouri',
         },
-        correctAnswer:'d',
+        correct:'d',
     },
         {
         questionId: 8,
@@ -85,7 +85,7 @@ appState.QUESTIONS = [
             c:'New Jersey',
             d:'Maine',
         },
-        correctAnswer:'a',
+        correct:'a',
     },
         {
         questionId: 9,
@@ -96,7 +96,7 @@ appState.QUESTIONS = [
             c:'Duluth',
             d:'Minneapolis',
         },
-        correctAnswer:'a',
+        correct:'a',
     },
         {
         questionId: 10,
@@ -107,6 +107,6 @@ appState.QUESTIONS = [
             c:'Nashville',
             d:'Chicago',
         },
-        correctAnswer:'d',
+        correct:'d',
     },
 ]

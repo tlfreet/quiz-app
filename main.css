@@ -7,10 +7,26 @@ section.starter-section {
 visibility: visible;
 }
 
+.advance-button {
+    display: none
+}
+
+.restart-quiz {
+    display: none;
+}
+
 p.correct {
 display: none;
 }
 
 p.wrong {
 display: none;
+}
+
+.question-section {
+   display: visible; 
+}
+
+.nav-status-bar {
+    display: visible;
 }
