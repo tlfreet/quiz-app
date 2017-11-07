@@ -1,14 +1,15 @@
 <html>
 <header>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="main.css">
 </header>
 <body>
+    
     <section class="starter-section">        
         <header> 
-            <!-- <img src="http://quizpug.com/wp-content/uploads/qc-images/5829f0c73c19b.jpg"> -->
-        </h1>
+   <img src="http://quizpug.com/wp-content/uploads/qc-images/5829f0c73c19b.jpg"> 
         <div>
-        <p>Are you a geography superstar?</p>
+        <h1>Are you a geography superstar?</h1>
         </div>
         <div>
         <button type="button" class="start-button">Let's Find Out</button>
@@ -19,9 +20,7 @@
             <p class="question-text"></p>
         </div>
         <div class="answers"></div>
-        <!--<div class="submit-button">
-            <button type="button" class="submit-button">Submit</button>
-        </div> -->
+       
         <div class="correct-answer">
             <p class="correct">Correct!</p>
             <p class="wrong">That's not it. The correct answer was...</p>
@@ -33,7 +32,10 @@
             <span class="score-status"></span>
         </div>
         <div class="navigation">
-        <button class="advance-button">Next</button>
+         <div class="submit-button">
+         <button type="button" class="submit-button">Submit</button>
+         </div> 
+         <button class="advance-button">Next</button>
         </div>
     </section>
     <section class="results">
@@ -42,9 +44,11 @@
             <button type=button class="restart-quiz">Do It Again</button>
         </div>
     </section>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <script type="text/javascript" src="index.js"></script>
- <script type="text/javascript" src="questions.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="store.js"></script>
 
 </body>
  

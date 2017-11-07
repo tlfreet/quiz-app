@@ -3,16 +3,11 @@ let currQuestText;
 let correctAns;
 let testAnswer;
 
-let appState = {
-    QUESTIONS: [], 
-    currentQuestion: 0,
-    choiceList: [],
-    questionNumber: 1,
-    userScore: 0,
-    route: 'start' || 'question' || 'feedback' || 'results'
-}
 
-function startQuiz() {
+// run the quiz
+
+function startQuiz(QUESTIONS) {
+//function startQuiz (QUESTIONS, route) ()
     $('.start-button').click(event => {
         $('.starter-section').toggle();
         updateQuestion();
@@ -51,10 +46,9 @@ function updateQuestion(){
 };
 
 function updateUserScore(){
-    //ASK: why ,userScore ?
     appState.userScore++;
     $('.total').empty();
-    $('.total').append('Your score is ' ,appState.userScore + '/10');   
+    $('.total').append('Your score is ' + appState.userScore + '/10');   
 }
 
 //ASK: the radio button doesn't light up until after the alert
@@ -62,20 +56,40 @@ function handleAnswerSelection(){
     console.log('handleAnswerSelection ran');
     //currentAnsVal = appState.currentQuestion;
    // console.log(currentAnsVal);
-   
+   correctAns = appState.QUESTIONS[appState.currentQuestion].correct;
     $('.answers').on('click', ':radio', event=> {
        testAnswer = $(event.currentTarget).attr('value');
          console.log(testAnswer + ' this is what I chose');
          console.log(correctAns + ' this is correct');
       if (testAnswer === correctAns ) {
-        alert('Correct!');
+        swal({
+            title:"Good Job", 
+            text:"You sure know your states!", 
+            icon: "success", 
+            button: "Challenge me some more!"
+        });
+        $(document).on('click','button.swal-button.swal-button--confirm',function(){
+            console.log('this worked!');
+             if (appState.currentQuestion < (appState.QUESTIONS.length - 1)){ 
+                 appState.currentQuestion++
+                 $('.answers').empty();
+                 updateQuestion();
+                }
+            else {
+                showFinalScore();
+            }
+        })
         //console.log(appState.userScore);
         updateUserScore();
       }
       else {
-        alert('Sorry the correct answer is ' + appState.QUESTIONS[appState.currentQuestion].answers[correctAns]);
+        swal({
+            title: "Nope!", 
+            text: "The correct answer is " + appState.QUESTIONS[appState.currentQuestion].answers[correctAns], 
+            icon: "error",
+            button:"Let me vindicate myself!"
+        });
       };
-      //ASK: when I had this two lines lower, wasn't calling it...
       $('.advance-button').toggle();
     });
     
@@ -106,7 +120,17 @@ function changeToNextQuestion() {
 //Users should be shown their overall score at the end of the quiz. In other words, how many questions they got right out of the total questions asked.
 function showFinalScore (){
     console.log('showFinalScore ran'); 
-    alert('you finished the quiz. Your final score was ' + appState.userScore); 
+    swal({
+        title: 'That\'s it',
+        content: "input", 
+        attrubutes: {
+            id:'final-final',
+            type: 'submit',
+        },
+        text:'You finished the quiz. Your final score was ' + appState.userScore,
+        icon: 'success',
+        button: 'I want to do it again!',
+    }); 
     $('.restart-quiz').toggle();
     $('.question-section').toggle();
     $('nav-status-bar').toggle();  

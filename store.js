@@ -1,4 +1,10 @@
-appState.QUESTIONS = [
+let appState = {
+    QUESTIONS: [],
+    currentQuestion: 0,
+    choiceList: [],
+    questionNumber: 1,
+    userScore: 0,
+    QUESTIONS: [
     {
         questionId: 1,
         questionText:'What is the capital of Kentucky?',
@@ -109,4 +115,5 @@ appState.QUESTIONS = [
         },
         correct:'d',
     },
-]
+],
+}

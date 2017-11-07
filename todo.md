@@ -1,0 +1,1 @@
+- don't miss hidden question/answers section and status sections for the css styling. This is probably better state routing
