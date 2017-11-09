@@ -59,16 +59,15 @@ function handleAnswerSelection(){
    correctAns = appState.QUESTIONS[appState.currentQuestion].correct;
     $('.answers').on('click', ':radio', event=> {
        testAnswer = $(event.currentTarget).attr('value');
-         console.log(testAnswer + ' this is what I chose');
-         console.log(correctAns + ' this is correct');
-      if (testAnswer === correctAns ) {
-        swal({
-            title:"Good Job", 
-            text:"You sure know your states!", 
-            icon: "success", 
-            button: "Challenge me some more!"
+        if (testAnswer === correctAns ) {
+            swal({
+            title:'Good Job', 
+            text:'You sure know your states!', 
+            icon: 'success', 
+            className: 'correct-button',
+            button: 'Challenge me some more!'
         });
-        $(document).on('click','button.swal-button.swal-button--confirm',function(){
+       $(document).on('click','.correct-button',function(){
             console.log('this worked!');
              if (appState.currentQuestion < (appState.QUESTIONS.length - 1)){ 
                  appState.currentQuestion++
@@ -77,23 +76,34 @@ function handleAnswerSelection(){
                 }
             else {
                 showFinalScore();
-            }
-        })
+            };
+        });
         //console.log(appState.userScore);
         updateUserScore();
       }
       else {
         swal({
-            title: "Nope!", 
-            text: "The correct answer is " + appState.QUESTIONS[appState.currentQuestion].answers[correctAns], 
-            icon: "error",
-            button:"Let me vindicate myself!"
+            title: 'Nope!', 
+            text: 'The correct answer is ' + appState.QUESTIONS[appState.currentQuestion].answers[correctAns], 
+            icon: 'error',
+            className: 'wrong-answer',
+            button:'Let me vindicate myself!'
         });
-      };
+        $(document).on('click','.wrong-answer',function(){
+            console.log('this also worked!');
+             if (appState.currentQuestion < (appState.QUESTIONS.length - 1)){ 
+                 appState.currentQuestion++
+                 $('.answers').empty();
+                 updateQuestion();
+                }
+            else {
+                showFinalScore();
+            };
       $('.advance-button').toggle();
-    });
-    
-};
+      });
+    };
+   });
+}
 
 
 
@@ -122,19 +132,20 @@ function showFinalScore (){
     console.log('showFinalScore ran'); 
     swal({
         title: 'That\'s it',
-        content: "input", 
-        attrubutes: {
-            id:'final-final',
-            type: 'submit',
-        },
         text:'You finished the quiz. Your final score was ' + appState.userScore,
         icon: 'success',
+        className: 'restart-quiz',
         button: 'I want to do it again!',
-    }); 
-    $('.restart-quiz').toggle();
-    $('.question-section').toggle();
-    $('nav-status-bar').toggle();  
-}
+    });
+    $(document).on('click', 'restart-quiz', function(){
+    //restartQuiz();
+    console.log('restart-quiz targeted');
+    });
+    //$('.restart-quiz').toggle();
+    //$('.question-section').toggle();
+    //$('nav-status-bar').toggle();  
+};
+
 //Users should be able to start a new game.
 function restartQuiz(){
     console.log('restartQuiz ran');
