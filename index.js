@@ -20,14 +20,14 @@ function startQuiz(QUESTIONS) {
 function updateQtnNum(){
     $('.question-status').empty();
     //ASK:why wasn't replace with working?
-    $('.question-status').append('This is Question '+ appState.questionNumber + ' out of 10');
-    appState.questionNumber++;
+    $('.question-status').append('This is Question '+ (appState.currentQuestion + 1) + ' out of 10');
+    //appState.questionNumber++;
   
 }
 
 function currentAnswerList(){
     appState.choiceList = [];
-    console.log(appState.currentQuestion);
+   // console.log(appState.currentQuestion);
      $.each(appState.QUESTIONS[appState.currentQuestion].answers, function(i, val){
         $('.answers').append(appState.choiceList +=`<input type="radio" name="answerChoice" id="answer" value="${i}"><label for="answer-1"> ${val}</label>`).html(appState.choiceList);
      })
@@ -68,7 +68,6 @@ function handleAnswerSelection(){
             button: 'Challenge me some more!'
         });
        $(document).on('click','.correct-button',function(){
-            console.log('this worked!');
              if (appState.currentQuestion < (appState.QUESTIONS.length - 1)){ 
                  appState.currentQuestion++
                  $('.answers').empty();
@@ -107,13 +106,14 @@ function handleAnswerSelection(){
 
 
 
-function showFeedback() {
+/*function showFeedback() {
     //ASK: this needs to know which answer is right 
     //$('.answers').on('click', 'answer')
     console.log('showFeedback ran'); 
-} 
+} */ 
 
-function changeToNextQuestion() {
+//not needed with swal updates
+/*function changeToNextQuestion() {
     console.log('changeToNextQuestion ran');
     $('.advance-button').click(event => {
        if (appState.currentQuestion < (appState.QUESTIONS.length - 1)){ 
@@ -125,8 +125,9 @@ function changeToNextQuestion() {
            showFinalScore();
        };
        $('.advance-button').toggle();
-    })
-}
+    }) 
+}*/
+
 //Users should be shown their overall score at the end of the quiz. In other words, how many questions they got right out of the total questions asked.
 function showFinalScore (){
     console.log('showFinalScore ran'); 
@@ -158,8 +159,8 @@ function restartQuiz(){
 function handleWholeQuiz(){
     startQuiz();
     handleAnswerSelection();
-    changeToNextQuestion();
-    showFeedback();
+    //changeToNextQuestion();
+    //showFeedback();
     restartQuiz();
 }
 

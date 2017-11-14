@@ -2,7 +2,7 @@ let appState = {
     QUESTIONS: [],
     currentQuestion: 0,
     choiceList: [],
-    questionNumber: 1,
+   // questionNumber: 1,
     userScore: 0,
     QUESTIONS: [
     {
